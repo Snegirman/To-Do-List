@@ -1,9 +1,9 @@
-const addTaskBtn = document.getElementById('add-task-button');
-const deskTaskInput = document.getElementById('input-task');
-const toDoList = document.getElementById('task-list');
-let deleteTaskBtn = [];
-let tasks;
-let todoTaskElements = [];
+const addTaskBtn = document.getElementById('add-task-button'),
+      deskTaskInput = document.getElementById('input-task'),
+      toDoList = document.getElementById('task-list');
+let deleteTaskBtn = [],
+    tasks,
+    todoTaskElements = [];
 !localStorage.tasks ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks'));
 
 function Task (description) {
@@ -38,14 +38,14 @@ function checkedAdd (index) {
 
 const updateLocal = () => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+};
 
 const fillHtmlList = () => {
     toDoList.innerHTML = "";
     if(tasks.length > 0) {
         tasks.forEach((item, index) => {
             toDoList.innerHTML += createTemplate(item, index);
-        })
+        });
         todoTaskElements = document.querySelectorAll('.task');
         deleteTaskBtn = document.querySelectorAll('.delete-btn');
     }
